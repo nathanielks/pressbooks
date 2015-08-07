@@ -7,6 +7,7 @@
 			  share: {
 			    twitter: true
 			  },
+			  template: '<div class="box"><a class="count" href="#">{total}</a><a class="share" href="#"><span class="screen-reader-text">Twitter</span></a></div>',
 			  enableHover: false,
 			  enableTracking: true,
 			  buttons: { twitter: {via: 'Pressbooks'}},
@@ -19,6 +20,7 @@
 			  share: {
 			    facebook: true
 			  },
+			  template: '<div class="box"><a class="count" href="#">{total}</a><a class="share" href="#"><span class="screen-reader-text">Facbook</span></a></div>',
 			  enableHover: false,
 			  enableTracking: true,
 			  click: function(api, options){
@@ -30,6 +32,7 @@
 			  share: {
 			    googlePlus: true
 			  },
+			  template: '<div class="box"><a class="count" href="#">{total}</a><a class="share" href="#"><span class="screen-reader-text">Google +</span></a></div>',
 			  enableHover: false,
 			  enableTracking: true,
 			  urlCurl: PB_SharrreToken.urlCurl,

@@ -1,19 +1,35 @@
-<?php get_header();
-if (get_option('blog_public') == '1' || (get_option('blog_public') == '0' && current_user_can_for_blog($blog_id, 'read'))):
-if (have_posts()) the_post(); ?>
-			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				<?php if (is_front_page()): ?>
-					<h2 class="entry-title"><?php the_title(); ?></h2>
-				<?php else: ?>
-					<h1 class="entry-title"><?php the_title(); ?></h1>
-				<?php endif; ?>
-				<div class="entry-content">
-					<?php edit_post_link( __( 'Edit', 'pressbooks' ), '<span class="edit-link">', '</span>' ); ?>
-					<?php the_content(); ?>
-					<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'pressbooks' ), 'after' => '</div>' ) ); ?>
-				</div><!-- .entry-content -->
-			</div><!-- #post-## -->
-<?php else: ?>
-<?php pb_private(); ?>
-<?php endif; ?>
+<?php
+/**
+ * The template for displaying all pages.
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site will use a
+ * different template.
+ *
+ * @package Luther
+ */
+
+get_header(); ?>
+
+
+	<main id="main" class="site-main" role="main">
+
+		<?php while ( have_posts() ) : the_post(); ?>
+
+			<?php get_template_part( 'template-parts/content', 'page' ); ?>
+
+			<?php
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) :
+					comments_template();
+				endif;
+			?>
+
+		<?php endwhile; // End of the loop. ?>
+
+	</main><!-- #main -->
+
+
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -1,50 +1,80 @@
-<div id="comments">
-<?php if ( post_password_required() ) : ?>
-				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'pressbooks' ); ?></p>
-			</div><!-- #comments -->
 <?php
-		return;
-	endif;
+/**
+ * The template for displaying comments.
+ *
+ * The area of the page that contains both current comments
+ * and the comment form.
+ *
+ * @package Luther
+ */
+
+/*
+ * If the current post is protected by a password and
+ * the visitor has not yet entered the password we will
+ * return early without loading the comments.
+ */
+if ( post_password_required() ) {
+	return;
+}
 ?>
 
-<?php if ( have_comments() ) : ?>
-			<h3 id="comments-title"><?php
-			printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'pressbooks' ),
-			number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
-			?></h3>
+<div id="comments" class="comments-area">
 
-<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-			<div class="navigation">
-				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'pressbooks' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'pressbooks' ) ); ?></div>
-			</div> <!-- .navigation -->
-<?php endif; // check for comment navigation ?>
+	<?php // You can start editing here -- including this comment! ?>
 
-			<ol class="commentlist">
-				<?php wp_list_comments( array( 'callback' => 'pressbooks_comment' ) ); ?>
-			</ol>
+	<?php if ( have_comments() ) : ?>
+		<h2 class="comments-title">
+			<?php
+				printf( // WPCS: XSS OK.
+					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'pressbooks' ) ),
+					number_format_i18n( get_comments_number() ),
+					'<span>' . get_the_title() . '</span>'
+				);
+			?>
+		</h2>
 
-<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-			<div class="navigation">
-				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'pressbooks' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'pressbooks' ) ); ?></div>
-			</div><!-- .navigation -->
-<?php endif; // check for comment navigation ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
+		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
+			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'pressbooks' ); ?></h2>
+			<div class="nav-links">
 
-<?php else : // or, if we don't have comments:
-	if ( ! comments_open() ) :
-?>
-	<p class="nocomments"><?php _e( 'Comments are closed.', 'pressbooks' ); ?></p>
-<?php endif; // end ! comments_open() ?>
+				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'pressbooks' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'pressbooks' ) ); ?></div>
 
-<?php endif; // end have_comments() ?>
+			</div><!-- .nav-links -->
+		</nav><!-- #comment-nav-above -->
+		<?php endif; // Check for comment navigation. ?>
 
-<?php 
-/* Comment form submit text*/
-$comments_args = array(
-		'label_submit' => __('Submit', 'pressbooks'),						
-);
+		<ol class="comment-list">
+			<?php
+				wp_list_comments( array(
+					'style'      => 'ol',
+					'short_ping' => true,
+				) );
+			?>
+		</ol><!-- .comment-list -->
 
-comment_form($comments_args); ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
+		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
+			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'pressbooks' ); ?></h2>
+			<div class="nav-links">
+
+				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'pressbooks' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'pressbooks' ) ); ?></div>
+
+			</div><!-- .nav-links -->
+		</nav><!-- #comment-nav-below -->
+		<?php endif; // Check for comment navigation. ?>
+
+	<?php endif; // Check for have_comments(). ?>
+
+	<?php
+		// If comments are closed and there are comments, let's leave a little note, shall we?
+		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+	?>
+		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'pressbooks' ); ?></p>
+	<?php endif; ?>
+
+	<?php comment_form(); ?>
 
 </div><!-- #comments -->

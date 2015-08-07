@@ -1,57 +1,56 @@
-<?php if( !is_single() ){?>
-	
+<?php
+/**
+ * The template for displaying the footer.
+ *
+ * Contains the closing of the #content div and all content after
+ *
+ * @package Luther
+ */
+
+?>
+
 	</div><!-- #content -->
 
-<?php } ?>
-<?php if( !is_front_page() ){?>
+	<footer id="colophon" class="pb-book-theme site-footer" role="contentinfo">
+		<div class="book-meta clear">
+			<?php if (get_option('blog_public') == '1' || is_user_logged_in()): ?>
 
-	<?php get_sidebar(); ?>
+				<dl class="book-meta-list clear">
+					<dt><?php _e('Book Name', 'pressbooks'); ?>:</dt>
+					<dd><?php bloginfo('name'); ?></dd>
 
-	</div><!-- #wrap -->
-	<div class="push"></div>
-	
-	</div><!-- .wrapper for sitting footer at the bottom of the page -->
-<?php } ?>
+					<?php global $metakeys; ?>
+					<?php $metadata = pb_get_book_information();?>
+					<?php foreach ($metadata as $key => $val): ?>
+					<?php if ( isset( $metakeys[$key] ) && ! empty( $val ) ): ?>
+						<dt><?php _e($metakeys[$key], 'pressbooks'); ?>:</dt>
+						<dd><?php if ( 'pb_publication_date' == $key ) { $val = date_i18n( 'F j, Y', absint( $val ) );  } echo $val; ?></dd>
+					<?php endif; ?>
+					<?php endforeach; ?>
 
+					<?php
+					// Copyright
+					echo '<dt>' . __( 'Copyright', 'pressbooks' ) . ':</dt><dd>';
+					echo ( ! empty( $metadata['pb_copyright_year'] ) ) ? $metadata['pb_copyright_year'] : date( 'Y' );
+					if ( ! empty( $metadata['pb_copyright_holder'] ) ) echo ' ' . __( 'by', 'pressbooks' ) . ' ' . $metadata['pb_copyright_holder'] . '. ';
+					echo "</dd>\n";
+					?>
 
-<div class="footer">
-	<div class="inner">
-		<?php if (get_option('blog_public') == '1' || is_user_logged_in()): ?>
-			<?php if (is_page() || is_home( ) ): ?>
-			
-			<table>
-				<tr>
-					<td><?php _e('Book Name', 'pressbooks'); ?>:</td>
-					<td><?php bloginfo('name'); ?></td>
-				</tr>
-				<?php global $metakeys; ?>
-       			 <?php $metadata = pb_get_book_information();?>
-				<?php foreach ($metadata as $key => $val): ?>
-				<?php if ( isset( $metakeys[$key] ) && ! empty( $val ) ): ?>
-				<tr>
-					<td><?php _e($metakeys[$key], 'pressbooks'); ?>:</td>
-					<td><?php if ( 'pb_publication_date' == $key ) { $val = date_i18n( 'F j, Y', absint( $val ) );  } echo $val; ?></td>
-				<?php endif; ?>
-				<?php endforeach; ?>
-				</tr>
-				<?php
-				// Copyright
-				echo '<tr><td>' . __( 'Copyright', 'pressbooks' ) . ':</td><td>';
-				echo ( ! empty( $metadata['pb_copyright_year'] ) ) ? $metadata['pb_copyright_year'] : date( 'Y' );
-				if ( ! empty( $metadata['pb_copyright_holder'] ) ) echo ' ' . __( 'by', 'pressbooks' ) . ' ' . $metadata['pb_copyright_holder'] . '. ';
-				echo "</td></tr>\n";
-				?>
+					</dl>
 
-				</table>
-				<?php endif; ?>
-			
-			<?php echo pressbooks_copyright_license(); ?>
+				<?php echo pressbooks_copyright_license(); ?>
 
 			<?php endif; ?>
-			<p class="cie-name"><a href="http://pressbooks.com"><?php _e('PressBooks.com: Simple Book Production', 'pressbooks'); ?></a></p>
-	</div><!-- #inner -->
-</div><!-- #footer -->
-</span><!-- schema.org -->
+		</div><!-- .book-meta -->
+
+		<div class="site-info">
+			<p class="cie-name"><a href="http://pressbooks.com"><?php printf( esc_html__( 'PressBooks.com: Simple Book Production', 'pressbooks')); ?></a></p>
+		</div><!-- .site-info -->
+
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
 <?php wp_footer(); ?>
+
 </body>
 </html>

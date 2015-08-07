@@ -1,0 +1,120 @@
+body,
+button,
+input,
+select,
+textarea {
+	color: $color__text-main;
+	font-family: $font__main;
+	@include font-size(1);
+	line-height: $font__line-height-body;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+}
+
+p {
+	margin-bottom: 1.5em;
+}
+
+dfn, cite, em, i {
+	font-style: italic;
+}
+
+blockquote {
+	margin: 0 1.5em;
+}
+
+address {
+	margin: 0 0 1.5em;
+}
+
+pre {
+	background: $color__background-pre;
+	font-family: $font__pre;
+	@include font-size(0.9375);
+	line-height: $font__line-height-pre;
+	margin-bottom: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6em;
+}
+
+code, kbd, tt, var {
+	font-family: $font__code;
+	@include font-size(0.9375);
+}
+
+abbr, acronym {
+	border-bottom: 1px dotted $color__text-input;
+	cursor: help;
+}
+
+mark, ins {
+	background: $color__background-ins;
+	text-decoration: none;
+}
+
+big {
+	font-size: 125%;
+}
+
+@charset "UTF-8";
+
+@font-face {
+  font-family: "pb-book-theme";
+  src:url("fonts/pb-book-theme.eot");
+  src:url("fonts/pb-book-theme.eot?#iefix") format("embedded-opentype"),
+    url("fonts/pb-book-theme.woff") format("woff"),
+    url("fonts/pb-book-theme.ttf") format("truetype"),
+    url("fonts/pb-book-theme.svg#pb-book-theme") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "pb-book-theme" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "pb-book-theme" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-budicon:before {
+  content: "a"; //Login
+}
+.icon-budicon-1:before {
+  content: "b"; // Logout
+}
+.icon-twitter:before {
+  content: "c"; // Twitter
+}
+.icon-facebook:before {
+  content: "d"; //Facebook
+}
+.icon-google-plus:before {
+  content: "e"; // Google+
+}
+.icon-budicon-2:before {
+  content: "f"; // Settings
+  font-size: 18px;
+}
