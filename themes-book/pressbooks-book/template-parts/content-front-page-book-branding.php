@@ -9,22 +9,22 @@
 
 <?php $metadata = pb_get_book_information(); pb_get_links( false ); ?>
 	<!-- Book Branding -->
-	<div class="pb-book-theme book-branding site-width clear">
+	<div class="pb-book-theme pb-book-branding site-width clear">
 
 		<!-- Book info -->
-		<div class="book-branding-info">
-			<h1 class="book-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+		<div class="pb-book-branding-info">
+			<h1 class="pb-book-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 
 			<?php if ( ! empty( $metadata['pb_author'] ) ): ?>
-				<p class="book-author"><?php echo $metadata['pb_author']; ?></p>
+				<p class="pb-book-author"><?php echo $metadata['pb_author']; ?></p>
 			<?php endif; ?>
 
 			<?php if ( ! empty( $metadata['pb_about_140'] ) ) : ?>
-				<p class="sub-title"><?php echo $metadata['pb_about_140']; ?></p>
+				<p class="pb-sub-title"><?php echo $metadata['pb_about_140']; ?></p>
 			<?php endif; ?>
 
 			<?php if ( ! empty( $metadata['pb_about_50'] ) ): ?>
-				<p class="book-blurb"><?php echo pb_decode( $metadata['pb_about_50'] ); ?></p>
+				<p class="pb-book-blurb"><?php echo pb_decode( $metadata['pb_about_50'] ); ?></p>
 			<?php endif; ?>
 
 			<!-- Book CTAs -->
@@ -43,7 +43,7 @@
 
 		<!-- Book Image -->
 		<?php if ( ! empty( $metadata['pb_cover_image'] ) ): ?>
-		<div class="book-cover">
+		<div class="pb-book-cover">
 				<img src="<?php echo $metadata['pb_cover_image']; ?>" alt="book-cover" title="<?php bloginfo( 'name' ); ?> book cover" />
 		</div>
 		<?php endif; ?>

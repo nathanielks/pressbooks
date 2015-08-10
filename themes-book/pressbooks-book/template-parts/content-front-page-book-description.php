@@ -1,9 +1,9 @@
 	<!-- Book Description -->
-	<section class="pb-book-theme book-info bg-alt-color clear">
+	<section class="pb-book-theme pb-book-info bg-alt-color clear">
 
 		<div class="site-width">
 
-			<div class="book-info-description">
+			<div class="pb-book-info-description">
 				<?php $metadata = pb_get_book_information();?>
 				<h3><?php _e('Book Description', 'pressbooks'); ?></h3>
 					<?php if ( ! empty( $metadata['pb_about_unlimited'] ) ): ?>
@@ -25,11 +25,11 @@
 						)
 					); ?>
 
-			<div class="book-info-author">
+			<div class="pb-book-info-author">
 
 				<?php $loop = new WP_Query( $args );
 					while ( $loop->have_posts() ) : $loop->the_post(); ?>
-					<h3 class="book-info-author-title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
+					<h3 class="pb-book-info-author-title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
 					<?php  echo '<div class="entry-content">';
 						the_excerpt();
 					echo '</div>';

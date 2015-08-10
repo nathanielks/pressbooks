@@ -1,5 +1,3 @@
-// @import "../layout/content-sidebar";
-// @import "../layout/sidebar-content";
 
 /*--------------------------------------------------------------
 ## Structure
@@ -7,6 +5,10 @@
 .site-width {
 	margin: auto;
 	max-width: $size__site-full;
+}
+.site-width-inner {
+	margin: auto;
+	max-width: $size__site-med;
 }
 
 .site-content {
@@ -27,7 +29,8 @@
 		border-radius: 2px;
 		display: inline-block;
 		font-family: $font__header;
-		font-size: 1.125em;
+		font-size: 18px;
+		font-size: 1.125rem;
 		font-weight: bold;
 		margin: 2em;
 		padding: 10px 3em;
@@ -53,7 +56,6 @@
 	&.bg-alt-color {
 		background-color: $color__background-alt;
 	}
-
 }
 
 /*--------------------------------------------------------------
@@ -79,7 +81,8 @@
 
 		p {
 			font-family: $font__header;
-			font-size: 0.875em;
+			font-size: 16px;
+			font-size: 0.875rem;
 			font-weight: normal;
 			margin: 0;
 		}
@@ -116,8 +119,10 @@
 			background-color: darken($color__background-dark, 15%);
 			display: inline-block;
 			font-family: $font__header;
-			font-size: .9375em;
+			font-size: 15px;
+			font-size: .9375rem;
 			line-height: 5.333333;
+			margin-right: -1px;
 			padding: 0 1.5em;
 			text-decoration: none;
 
@@ -145,9 +150,9 @@
 --------------------------------------------------------------*/
 .pb-book-theme  {
 
-	&.book-branding {
+	&.pb-book-branding {
 
-		.book-branding-info {
+		.pb-book-branding-info {
 			margin: 0 auto 6.25em;
 			max-width: 475px;
 			text-align: center;
@@ -157,12 +162,14 @@
 				width: 48%;
 			}
 
-			.book-title {
+			.pb-book-title {
 				font-family: $font__header;
-				font-size: 2.25em; // 36/16
+				font-size: 36px;
+				font-size: 2.25rem; // 36/16
 				font-weight: bold;
 				margin-bottom: 0;
 				text-align: center;
+				text-transform: none;
 
 				a {
 					color: $color__text-main;
@@ -174,9 +181,10 @@
 				}
 			}
 
-			.book-author {
+			.pb-book-author {
 				font-family: $font__header;
-				font-size: 1.125em; // 18/16
+				font-size: 18px;
+				font-size: 1.125rem; // 18/16
 				margin-top: 0;
 
 				&:after {
@@ -184,20 +192,22 @@
 				}
 			}
 
-			.sub-title {
+			.pb-sub-title {
 				font-family: $font__header;
-				font-size: 1.5em; // 24/16
+				font-size: 42px;
+				font-size: 1.5rem; // 24/16
 				font-weight: bold;
 			}
 
-			.book-blurb {
-				font-size: 1.25em; // 20/16
+			.pb-book-blurb {
+				font-size: 20px;
+				font-size: 1.25rem; // 20/16
 				text-align: left;
 			}
 
 		}
 
-		.book-cover {
+		.pb-book-cover {
 			text-align: center;
 
 			@media screen and (min-width: $size__site-med) {
@@ -207,31 +217,39 @@
 
 			img {
 				margin: auto;
-				max-width: 390px;
+				max-width: 390px !important;
 				height: auto;
 			}
 
 		}
 	}
 
-	&.book-info {
-		font-size: 1.1875em; // 19/16
-		padding: 6.25em 0;
+	&.pb-book-info {
+		font-size: 19px;
+		font-size: 1.1875rem; // 19/16
+		padding: 5em 0;
 
-		.book-info-description {
+		.pb-book-info-description {
 			float: left;
 			width: 630px;
 		}
 
-		.book-info-author {
+		.pb-book-info-author {
 			float: left;
 			margin-left: 100px;
 			width: 370px;
+
+			h3 a {
+				border-bottom: 1px dotted $color__link;
+				padding-bottom: .35em;
+				text-decoration: none;
+			}
 		}
 
 		h3 {
 			font-family: $font__header;
-			font-size: 1.263157895em; // 24/19
+			font-size: 24px;
+			font-size: 1.5rem; // 24/19
 			margin-bottom: 2em;
 			padding-bottom: 0;
 		}
@@ -246,110 +264,37 @@
 		}
 	}
 
-	.sharrre-wrap {
-		margin-top: 2em;
-
-		.sharrre {
-			float: left;
-			font-family: $font__header;
-			font-size: .875em;
-			margin-right: 1em;
-
-			a {
-				color: $color__text-white;
-				display: inline-block;
-				padding: 10px 20px;
-				text-decoration: none;
-			}
-
-			.share {
-				line-height: 1;
-
-				&:before {
-					font-family: "pb-book-theme" !important;
-					font-style: normal !important;
-					font-weight: normal !important;
-					font-variant: normal !important;
-					text-transform: none !important;
-					speak: none;
-					line-height: 1.2;
-					-webkit-font-smoothing: antialiased;
-					-moz-osx-font-smoothing: grayscale;
-					vertical-align: bottom;
-				}
-			}
-		}
-
-		// Twitter
-		#twitter {
-			background-color: #00abf0;
-
-			.share {
-
-				&:before {
-					content: "c";
-				}
-			}
-
-			.count {
-				background-color: darken(#00abf0, 10%);
-			}
-		}
-
-		// Facebook
-		#facebook {
-			background-color: #39579a;
-
-			.share {
-
-				&:before {
-					content: "d";
-				}
-			}
-
-			.count {
-				background-color: darken(#39579a, 10%);
-			}
-		} // #facebook
-
-		// Google +
-		#googleplus {
-			background-color: #df4a32;
-
-			.share {
-
-				&:before {
-					content: "e";
-				}
-			}
-
-			.count {
-				background-color: darken(#df4a32, 10%);
-			}
-		} // #googleplus
-	} 
-
-	&.boc-toc {
-		padding: 6.25em 0 9em;
-	}
-}
-
-.pb-book-theme {
-
-	&.book-toc {
+	&.pb-book-toc {
 		font-family: $font__main;
-		padding: 6.25em 0 9em;
+		padding: 5em 0;
 
 		h2 {
 			font-family: $font__header;
-			font-size: 2.25em; // 36/16
+			font-size: 36px;
+			font-size: 2.25rem; // 36/16
 			font-weight: bold;
-			margin-bottom: 3em;
+			margin-bottom: 0;
 			text-align: center;
 		}
 
-		.table-of-contents,
+		h4 {
+			font-size: 18px;
+			font-size: 1.125rem;
+			font-weight: bold;
+			margin-bottom: 15px;
+		}
+
+		li h4 {
+			margin-top: 30px;
+		}
+
+		.chapter {
+			margin-bottom: 7px;
+		}
+
+		.pb-table-of-contents,
 		ul {
+			font-family: $font__main;
 			list-style: none;
 			margin-left: 0;
 			padding-left: 0;
@@ -360,8 +305,125 @@
 			-moz-column-width:    20em;
 			-webkit-column-width: 20em;
 			column-width:         20em;
+
+			a {
+				font-family: $font__main;
+				text-decoration: none;
+			}
+		}
+	} // pb-book-toc
+}//pb-book-theme
+
+.pb-book-single-toc {
+	padding-top: 3em;
+
+	h2 {
+		font-family: $font__header;
+		font-size: 36px;
+		font-size: 2.25rem; // 36/16
+		font-weight: bold;
+		margin-bottom: 0;
+		text-align: center;
+		font-variant: normal;
+	}
+
+	ul {
+		list-style: none;
+
+		-moz-column-gap:      3em;
+		-webkit-column-gap:   3em;
+		column-gap:           3em;
+		-moz-column-width:    20em;
+		-webkit-column-width: 20em;
+		column-width:         20em;
+	}
+}
+
+/*--------------------------------------------------------------
+## Share buttons
+--------------------------------------------------------------*/
+#share {
+	margin-top: 2em;
+
+	.sharrre {
+		float: left;
+		font-family: $font__header;
+		font-size: 14px;
+		font-size: .875rem;
+		margin-right: 1em;
+
+		a {
+			color: $color__text-white;
+			display: inline-block;
+			padding: 10px 20px;
+			text-decoration: none;
+		}
+
+		.share {
+			line-height: 1;
+
+			&:before {
+				font-family: "pb-book-theme" !important;
+				font-style: normal !important;
+				font-weight: normal !important;
+				font-variant: normal !important;
+				text-transform: none !important;
+				speak: none;
+				line-height: 1.2;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				vertical-align: bottom;
+			}
 		}
 	}
+
+	// Twitter
+	#twitter {
+		background-color: #00abf0;
+
+		.share {
+
+			&:before {
+				content: "c";
+			}
+		}
+
+		.count {
+			background-color: darken(#00abf0, 10%);
+		}
+	}
+
+	// Facebook
+	#facebook {
+		background-color: #39579a;
+
+		.share {
+
+			&:before {
+				content: "d";
+			}
+		}
+
+		.count {
+			background-color: darken(#39579a, 10%);
+		}
+	} // #facebook
+
+	// Google +
+	#googleplus {
+		background-color: #df4a32;
+
+		.share {
+
+			&:before {
+				content: "e";
+			}
+		}
+
+		.count {
+			background-color: darken(#df4a32, 10%);
+		}
+	} // #googleplus
 }
 
 /*--------------------------------------------------------------
@@ -377,6 +439,7 @@
 		line-height: 1.2;
 		margin-bottom: 5px;
 		padding-bottom: 0;
+		text-transform: none;
 	}
 
 	p {
@@ -468,7 +531,8 @@
 	}
 
 	.site-info {
-		font-size: .875em;
+		font-size: 14px;
+		font-size: .875rem;
 
 		p {
 			margin: 0;
