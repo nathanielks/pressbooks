@@ -1,5 +1,6 @@
 <?php global $blog_id; $book = pb_get_book_structure(); ?>
-<ul class="table-of-contents" id="table-of-contents">
+<h2><?php _e('Table of Contents', 'pressbooks'); ?></h2>
+<ul class="pb-book-theme pb-book-toc" id="pb-table-of-contents">
 	<li id="front-matter">
 		<h4><?php _e( 'Front Matter', 'pressbooks' ); ?></h4>
 		<ul>

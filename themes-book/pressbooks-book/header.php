@@ -58,21 +58,35 @@ if ( isset( $fb_script['social_media'] ) && $fb_script['social_media'] == 1 ) { 
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'pressbooks' ); ?></button>
 					<?php if (!is_user_logged_in()): ?>
 
+						<!-- Login button -->
 						<a href="<?php echo wp_login_url(); ?>" class=""><i class="icon-budicon"></i><?php _e('Login', 'pressbooks'); ?></a>
 
 					<?php else: ?>
 
+						<!-- Logout button -->
 						<a href="<?php echo  wp_logout_url(); ?>" class=""><i class="icon-budicon-1"></i><?php _e('Logout', 'pressbooks'); ?></a>
 
+						<!-- Admin button -->
 						<?php if (is_super_admin() || is_user_member_of_blog()): ?>
 							<a href="<?php echo get_option('home'); ?>/wp-admin"><i class="icon-budicon-2"></i><span class="screen-reader-text"><?php _e('Admin', 'pressbooks'); ?></span></a>
 
 						<?php endif; ?>
+
+						<!-- TOC button -->
+						<?php if (is_single()): ?>
+							<a href="<?php echo get_option( 'home' ); ?>/table-of-contents"><?php _e( 'Table of Contents', 'pressbooks' ); ?></a>
+						<?php endif ;?>
 
 					<?php endif; ?>
 
 			</nav><!-- #site-navigation -->
 		</div><!-- end. site-width-->
 	</header><!-- #masthead -->
+
+	<?php if (is_single()): ?>
+		<div class="pb-book-single-toc site-width">
+			<?php get_template_part( 'template-parts/content', 'toc' ); ?>
+		</div>
+	<?php endif; ?>
 
 	<div id="content" class="site-content">
