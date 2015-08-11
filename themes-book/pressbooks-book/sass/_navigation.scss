@@ -106,9 +106,14 @@
 	}
 }
 
+
+/*--------------------------------------------------------------
+## Post navigation
+--------------------------------------------------------------*/
 .comment-navigation,
 .posts-navigation,
-.post-navigation {
+.post-navigation,
+.page-navigation {
 
 	.site-main & {
 		margin: 0 0 1.5em;
@@ -124,5 +129,69 @@
 		float: right;
 		text-align: right;
 		width: 50%;
+	}
+}
+
+.pb-book-theme {
+
+	&.page-navigation {
+		border: 1px solid darken($color__background-alt, 7%);
+		border-width: 1px 0;
+		margin-bottom: 6em;
+		padding: 2em 1em;
+
+		a {
+			color: $color__text-main;
+			font-family: $font__header;
+			text-decoration: none;
+
+			&:hover,
+			&:focus,
+			&:active {
+				color: lighten($color__text-main, 10%);
+			}
+			&:focus {
+				outline: thin dotted;
+			}
+			&:hover,
+			&:active {
+				outline: 0;
+			}
+		}
+
+		.next,
+		.previous {
+			float: left;
+			text-align: left;
+			width: 50%;
+
+			a {
+
+				&:before, 
+				&:after {
+					font-family: "FontAwesome";
+				}
+			}
+		}
+
+		.previous {
+
+			a:before {
+				content: " \f060";
+				font-weight: normal;
+				padding-right: .5em;
+			}
+		}
+
+		.next {
+			float: right;
+			text-align: right;
+
+			a:after {
+				content: "\f061 ";
+				font-weight: normal;
+				padding-left: .5em;
+			}
+		}
 	}
 }

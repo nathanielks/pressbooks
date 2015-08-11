@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<main id="main" class="site-main" role="main">
+	<main id="main" class="site-main site-width-inner clear" role="main">
 
 	<?php if ( have_posts() ) : ?>
 

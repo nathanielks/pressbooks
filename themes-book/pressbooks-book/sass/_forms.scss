@@ -2,14 +2,15 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1ps solid $color__background-button-dark;
+	border: 1px solid $color__background-button-dark;
 	border-radius: 3px;
 	background: $color__background-button-dark;
 	color: $color__text-white;
-	@include font-size(0.75);
+	@include font-size(.75);
+	font-family: $font__header;
 	line-height: 1;
-	padding: .6em 1em .4em;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+	padding: .6em 1em;
+	text-transform: uppercase;
 
 	&:hover,
 	&:active,
@@ -25,7 +26,7 @@ input[type="password"],
 input[type="search"],
 textarea {
 	color: $color__text-input;
-	border: 1px solid $color__border-input;
+	border: 1px solid $color__background-alt;
 	border-radius: 3px;
 
 	&:focus {
@@ -38,10 +39,24 @@ input[type="email"],
 input[type="url"],
 input[type="password"],
 input[type="search"] {
+	height: 45px;
+	margin-bottom: 15px;
 	padding: 3px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"] {
+	width: 100%;
 }
 
 textarea {
 	padding-left: 3px;
 	width: 100%;
+}
+
+label {
+	display: block;
+	font:  1.125em $font__header;
+	margin-bottom: 10px;
 }

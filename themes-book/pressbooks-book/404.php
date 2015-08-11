@@ -8,7 +8,7 @@
 get_header(); ?>
 
 
-	<main id="main" class="site-main" role="main">
+	<main id="main" class="site-main site-width-inner clear" role="main">
 
 		<section class="error-404 not-found">
 			<header class="page-header">

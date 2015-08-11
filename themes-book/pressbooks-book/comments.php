@@ -18,7 +18,7 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
+<div id="comments" class="comments-area pb-book-theme pb-book-theme-comments">
 
 	<?php // You can start editing here -- including this comment! ?>
 
@@ -50,6 +50,7 @@ if ( post_password_required() ) {
 				wp_list_comments( array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'avatar_size' => 100
 				) );
 			?>
 		</ol><!-- .comment-list -->

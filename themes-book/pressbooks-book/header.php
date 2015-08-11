@@ -25,24 +25,33 @@
 </head>
 
 <body <?php body_class('pb-book'); ?>>
-<?php get_template_part( 'template-parts/content', 'accessibility-toolbar' ); ?>
-<?php $fb_script = get_option( 'pressbooks_theme_options_web' );
-if ( isset( $fb_script['social_media'] ) && $fb_script['social_media'] == 1 ) { ?>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, "script", "facebook-jssdk"));</script>
-<?php } ?>
-<?php if (is_front_page()):?>
-<div id="page" class="hfeed site" itemscope itemtype="http://schema.org/Book" itemref="about alternativeHeadline author copyrightHolder copyrightYear datePublished description editor image inLanguage keywords publisher">
-<?php else: ?> 
-<div id="page" class="hfeed site" itemscope itemtype="http://schema.org/WebPage" itemref="about copyrightHolder copyrightYear inLanguage publisher">
-<?php endif; ?>
+
+	<?php get_template_part( 'template-parts/content', 'accessibility-toolbar' ); ?>
+
+	<?php $fb_script = get_option( 'pressbooks_theme_options_web' );
+		if ( isset( $fb_script['social_media'] ) && $fb_script['social_media'] == 1 ) { ?>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, "script", "facebook-jssdk"));</script>
+	<?php } ?>
+
+	<?php if (is_front_page()):?>
+		<div id="page" class="hfeed site" itemscope itemtype="http://schema.org/Book" itemref="about alternativeHeadline author copyrightHolder copyrightYear datePublished description editor image inLanguage keywords publisher">
+	<?php else: ?> 
+		<div id="page" class="hfeed site" itemscope itemtype="http://schema.org/WebPage" itemref="about copyrightHolder copyrightYear inLanguage publisher">
+	<?php endif; ?>
 
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'pressbooks' ); ?></a>
+
+	<?php if (is_single()): ?>
+		<div class="pb-book-single-toc site-width" id="header-toc">
+			<?php get_template_part( 'template-parts/content', 'toc' ); ?>
+		</div>
+	<?php endif; ?>
 
 	<header id="masthead" class="pb-book-theme site-header" role="banner">
 
@@ -72,21 +81,15 @@ if ( isset( $fb_script['social_media'] ) && $fb_script['social_media'] == 1 ) { 
 
 						<?php endif; ?>
 
-						<!-- TOC button -->
-						<?php if (is_single()): ?>
-							<a href="<?php echo get_option( 'home' ); ?>/table-of-contents"><?php _e( 'Table of Contents', 'pressbooks' ); ?></a>
-						<?php endif ;?>
-
 					<?php endif; ?>
+
+					<!-- TOC button -->
+					<?php if (is_single()): ?>
+						<a href="#" class="header-toc-btn"><?php _e( 'Table of Contents', 'pressbooks' ); ?></a>
+					<?php endif ;?>
 
 			</nav><!-- #site-navigation -->
 		</div><!-- end. site-width-->
 	</header><!-- #masthead -->
-
-	<?php if (is_single()): ?>
-		<div class="pb-book-single-toc site-width">
-			<?php get_template_part( 'template-parts/content', 'toc' ); ?>
-		</div>
-	<?php endif; ?>
 
 	<div id="content" class="site-content">

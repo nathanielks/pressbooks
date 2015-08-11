@@ -193,6 +193,8 @@ function pressbooks_book_scripts() {
 
 	wp_enqueue_script( 'pressbooks-keyboard-nav', get_template_directory_uri() . '/js/keyboard-nav.js', array('jquery'), '20150731', true );
 
+	wp_enqueue_script( 'pressbooks-header-toc', get_template_directory_uri() . '/js/header-toc.js', array('jquery'), '20150811', true );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -239,7 +241,7 @@ function pb_get_links($echo=true) {
   $prev_chapter = pb_get_prev();
   $next_chapter = pb_get_next();
   if ($echo):
-?><div class="nav">
+?><div class="page-navigation pb-book-theme ">
   <?php if ($prev_chapter != '/') : ?>
 	<span class="previous"><a href="<?php echo $prev_chapter; ?>"><?php _e('Previous', 'pressbooks'); ?></a></span>
   <?php endif; ?>

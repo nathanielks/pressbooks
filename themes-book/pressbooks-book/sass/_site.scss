@@ -8,7 +8,7 @@
 }
 .site-width-inner {
 	margin: auto;
-	max-width: $size__site-med;
+	max-width: 660px;
 }
 
 .site-content {
@@ -315,6 +315,7 @@
 }//pb-book-theme
 
 .pb-book-single-toc {
+	display: none;
 	padding-top: 3em;
 
 	h2 {
@@ -343,7 +344,8 @@
 ## Share buttons
 --------------------------------------------------------------*/
 #share {
-	margin-top: 2em;
+	margin: 2em 0 6em;
+	overflow: hidden;
 
 	.sharrre {
 		float: left;
@@ -477,21 +479,125 @@
 }
 
 /*--------------------------------------------------------------
-## Asides
+## Single
 --------------------------------------------------------------*/
-.blog .format-aside .entry-title,
-.archive .format-aside .entry-title {
-	display: none;
+.single {
+	.pb-book-theme.pb-book-branding .pb-book-branding-info {
+		float: none;
+		width: 100%;
+
+		a {
+			text-decoration: none;
+		}
+	}
+
+
 }
 
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
+.pb-book-theme-comments {
+	margin: 0 0 5em;
+	padding: 0 0 3em;
+
+	ol {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		.comment {
+			background-color: $color__background-alt;
+			padding: 2em;
+
+			.bypostauthor {
+				background-color: lighten($color__background-button, 57%);
+				display: block;
+			}
+		}
+
+	}
+
+	.children {
+		padding: 3em 0  0 0;
+
+		.comment {
+			background-color: #fff;
+
+			.comment {
+				background-color: $color__background-alt;
+			}
+		}
+	}
+
+	.comments-title {
+		margin-bottom: 2em;
+	}
+
+	.comment {
+		margin-bottom: 3em;
+	}
+
+	.avatar {
+		float: left;
+		margin: 0 2em 2em 0;
+	}
+
+	.comment-author {
+		font: 1.25em $font__header;
+		margin-bottom: 5px;
+
+		a {
+			text-decoration: none;
+		}
+	}
+
+	.comment-metadata {
+		font: .875em $font__header;
+		margin-bottom: 20px;
+
+		a {
+			color: $color__link;
+			text-decoration: none;
+		}
+	}
+
+	.comment-content,
+	.reply {
+		margin-left: 140px;
+	}
+
+	.reply {
+		text-align: right;
+
+		a {
+			font: .875em $font__header;
+			text-decoration: none;
+		}
+	}
+}
+
+.comment-list {
+	list-style: none;
+}
+
 .comment-content a {
 	word-wrap: break-word;
 }
-.bypostauthor {
-	display: block;
+
+.comment-respond {
+	background-color: $color__background-alt;
+	margin-top: 5em;
+	padding: 2em;
+}
+
+.form-allowed-tags {
+	color: $color__link;
+	font-size: .75em;
+
+	code {
+		font-size: 1em !important;
+	}
 }
 
 .widget {
@@ -502,14 +608,6 @@
 		max-width: 100%;
 	}
 }
-
-/*--------------------------------------------------------------
-## Search widget
---------------------------------------------------------------*/
-.widget_search .search-submit {
-	display: none;
-}
-
 
 /*--------------------------------------------------------------
 ## Footer

@@ -400,15 +400,16 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  border: 1ps solid #333;
+  border: 1px solid #333;
   border-radius: 3px;
   background: #333;
   color: #fff;
   font-size: 12px !important;
   font-size: 0.75rem !important;
+  font-family: Lato, sans-serif;
   line-height: 1;
-  padding: .6em 1em .4em;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); }
+  padding: .6em 1em;
+  text-transform: uppercase; }
   button:hover, button:active, button:focus,
   input[type="button"]:hover,
   input[type="button"]:active,
@@ -429,7 +430,7 @@ input[type="password"],
 input[type="search"],
 textarea {
   color: #666;
-  border: 1px solid #ccc;
+  border: 1px solid #f1f1f1;
   border-radius: 3px; }
   input[type="text"]:focus,
   input[type="email"]:focus,
@@ -444,11 +445,23 @@ input[type="email"],
 input[type="url"],
 input[type="password"],
 input[type="search"] {
+  height: 45px;
+  margin-bottom: 15px;
   padding: 3px; }
+
+input[type="text"],
+input[type="email"],
+input[type="url"] {
+  width: 100%; }
 
 textarea {
   padding-left: 3px;
   width: 100%; }
+
+label {
+  display: block;
+  font: 1.125em Lato, sans-serif;
+  margin-bottom: 10px; }
 
 /*--------------------------------------------------------------
 # Navigation
@@ -514,22 +527,64 @@ textarea {
 
   .main-navigation ul {
     display: block; } }
+/*--------------------------------------------------------------
+## Post navigation
+--------------------------------------------------------------*/
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
-.post-navigation {
+.post-navigation, .site-main
+.page-navigation {
   margin: 0 0 1.5em;
   overflow: hidden; }
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
-.post-navigation .nav-previous {
+.post-navigation .nav-previous,
+.page-navigation .nav-previous {
   float: left;
   width: 50%; }
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
-.post-navigation .nav-next {
+.post-navigation .nav-next,
+.page-navigation .nav-next {
   float: right;
   text-align: right;
   width: 50%; }
+
+.pb-book-theme.page-navigation {
+  border: 1px solid #dfdfdf;
+  border-width: 1px 0;
+  margin-bottom: 6em;
+  padding: 2em 1em; }
+  .pb-book-theme.page-navigation a {
+    color: #555;
+    font-family: Lato, sans-serif;
+    text-decoration: none; }
+    .pb-book-theme.page-navigation a:hover, .pb-book-theme.page-navigation a:focus, .pb-book-theme.page-navigation a:active {
+      color: #6f6f6f; }
+    .pb-book-theme.page-navigation a:focus {
+      outline: thin dotted; }
+    .pb-book-theme.page-navigation a:hover, .pb-book-theme.page-navigation a:active {
+      outline: 0; }
+  .pb-book-theme.page-navigation .next,
+  .pb-book-theme.page-navigation .previous {
+    float: left;
+    text-align: left;
+    width: 50%; }
+    .pb-book-theme.page-navigation .next a:before, .pb-book-theme.page-navigation .next a:after,
+    .pb-book-theme.page-navigation .previous a:before,
+    .pb-book-theme.page-navigation .previous a:after {
+      font-family: "FontAwesome"; }
+  .pb-book-theme.page-navigation .previous a:before {
+    content: " \f060";
+    font-weight: normal;
+    padding-right: .5em; }
+  .pb-book-theme.page-navigation .next {
+    float: right;
+    text-align: right; }
+    .pb-book-theme.page-navigation .next a:after {
+      content: "\f061 ";
+      font-weight: normal;
+      padding-left: .5em; }
 
 /*--------------------------------------------------------------
 # Accessibility
@@ -617,7 +672,7 @@ textarea {
 
 .site-width-inner {
   margin: auto;
-  max-width: 768px; }
+  max-width: 660px; }
 
 .site-content {
   margin: 9em 0 0;
@@ -831,6 +886,7 @@ textarea {
       text-decoration: none; }
 
 .pb-book-single-toc {
+  display: none;
   padding-top: 3em; }
   .pb-book-single-toc h2 {
     font-family: Lato, sans-serif;
@@ -853,7 +909,8 @@ textarea {
 ## Share buttons
 --------------------------------------------------------------*/
 #share {
-  margin-top: 2em; }
+  margin: 2em 0 6em;
+  overflow: hidden; }
   #share .sharrre {
     float: left;
     font-family: Lato, sans-serif;
@@ -937,32 +994,85 @@ textarea {
   margin: 0 0 1.5em; }
 
 /*--------------------------------------------------------------
-## Asides
+## Single
 --------------------------------------------------------------*/
-.blog .format-aside .entry-title,
-.archive .format-aside .entry-title {
-  display: none; }
+.single .pb-book-theme.pb-book-branding .pb-book-branding-info {
+  float: none;
+  width: 100%; }
+  .single .pb-book-theme.pb-book-branding .pb-book-branding-info a {
+    text-decoration: none; }
 
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
+.pb-book-theme-comments {
+  margin: 0 0 5em;
+  padding: 0 0 3em; }
+  .pb-book-theme-comments ol {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    .pb-book-theme-comments ol .comment {
+      background-color: #f1f1f1;
+      padding: 2em; }
+      .pb-book-theme-comments ol .comment .bypostauthor {
+        background-color: #feefee;
+        display: block; }
+  .pb-book-theme-comments .children {
+    padding: 3em 0  0 0; }
+    .pb-book-theme-comments .children .comment {
+      background-color: #fff; }
+      .pb-book-theme-comments .children .comment .comment {
+        background-color: #f1f1f1; }
+  .pb-book-theme-comments .comments-title {
+    margin-bottom: 2em; }
+  .pb-book-theme-comments .comment {
+    margin-bottom: 3em; }
+  .pb-book-theme-comments .avatar {
+    float: left;
+    margin: 0 2em 2em 0; }
+  .pb-book-theme-comments .comment-author {
+    font: 1.25em Lato, sans-serif;
+    margin-bottom: 5px; }
+    .pb-book-theme-comments .comment-author a {
+      text-decoration: none; }
+  .pb-book-theme-comments .comment-metadata {
+    font: 0.875em Lato, sans-serif;
+    margin-bottom: 20px; }
+    .pb-book-theme-comments .comment-metadata a {
+      color: #999;
+      text-decoration: none; }
+  .pb-book-theme-comments .comment-content,
+  .pb-book-theme-comments .reply {
+    margin-left: 140px; }
+  .pb-book-theme-comments .reply {
+    text-align: right; }
+    .pb-book-theme-comments .reply a {
+      font: 0.875em Lato, sans-serif;
+      text-decoration: none; }
+
+.comment-list {
+  list-style: none; }
+
 .comment-content a {
   word-wrap: break-word; }
 
-.bypostauthor {
-  display: block; }
+.comment-respond {
+  background-color: #f1f1f1;
+  margin-top: 5em;
+  padding: 2em; }
+
+.form-allowed-tags {
+  color: #999;
+  font-size: .75em; }
+  .form-allowed-tags code {
+    font-size: 1em !important; }
 
 .widget {
   margin: 0 0 1.5em;
   /* Make sure select elements fit in widgets. */ }
   .widget select {
     max-width: 100%; }
-
-/*--------------------------------------------------------------
-## Search widget
---------------------------------------------------------------*/
-.widget_search .search-submit {
-  display: none; }
 
 /*--------------------------------------------------------------
 ## Footer
