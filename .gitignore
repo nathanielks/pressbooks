@@ -6,3 +6,5 @@ symbionts/mpdf/graph_cache/
 .sass-cache
 .tx
 config.codekit
+pb-plugin.sublime-workspace
+pb-plugin.sublime-project
